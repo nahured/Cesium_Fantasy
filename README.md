@@ -91,10 +91,10 @@ pip install -r requirements.txt
 
 ``` cmd
 :: descargar zip de cesiumjs desde su repositorio en la version 1.138
-curl -L -o cesium.zip https://github.com/CesiumGS/cesium/releases/download/1.138/Cesium-1.138.zip
+curl.exe -L -o cesium.zip https://github.com/CesiumGS/cesium/releases/download/1.138/Cesium-1.138.zip
 
 :: extraer el zip de cesiumjs en la carpeta indicada
-tar -xf cesium.zip -C ./src/server/static/js/modules/Cesiumjs
+tar.exe -xf cesium.zip -C ./src/server/static/js/modules/Cesiumjs
 ```
 
 > si quieres descargar directamente
