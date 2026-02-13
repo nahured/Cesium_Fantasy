@@ -47,12 +47,9 @@ cesium_fantasy/
 │   │           └── utils.js        # Ejemplo de utilidades JS
 │   │
 │   ├── utils_py/                   # Utilidades en Python
-│   │   ├── __init__.py
-│   │   ├── data_handler.py         # Manejo de datos
-│   │   └── util.py                 # Logging y utilidades generales
-│   │
-│   └── utils_js/                   # Carpeta adicional para utilidades JS puras
-│       └── common.js               # Utilidades JS reutilizables
+│       ├── __init__.py
+│       ├── data_handler.py         # Manejo de datos
+│       └── util.py                 # Logging y utilidades generales
 │
 ├── tests/                          # Pruebas unitarias
 │   ├── test_gui.py
