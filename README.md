@@ -76,7 +76,7 @@ cesium_fantasy/
 python -m venv venv
 
 :: activamos el entorno virtual
-call ./venv/Scripts/activate.bat
+venv/Scripts/activate
 
 :: isntalamos lor modulos requeridos
 pip install -r requirements.txt
