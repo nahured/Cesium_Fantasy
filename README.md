@@ -31,7 +31,7 @@ cesium_fantasy/
 │   ├── gui/                        # Responsabilidad única: Interfaz gráfica (wxPython)
 │   │   ├── __init__.py
 │   │   ├── main_app.py             # Punto de entrada para la app de escritorio
-|   |   └── other/
+|   |   └── modules/
 │   │
 │   ├── server/                     # Responsabilidad única: Lógica del servidor web (Flask)
 │   │   ├── __init__.py
@@ -46,7 +46,7 @@ cesium_fantasy/
 │   │           │  └── Cesiumjs/    # Carpeta para colocar CesiumJs "no va incluido en el repositorio"
 │   │           └── utils.js        # Ejemplo de utilidades JS
 │   │
-│   ├── utils_py/                   # Utilidades en Python
+│   └── utils_py/                   # Utilidades en Python
 │       ├── __init__.py
 │       ├── data_handler.py         # Manejo de datos
 │       └── util.py                 # Logging y utilidades generales
