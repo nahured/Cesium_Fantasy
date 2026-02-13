@@ -1,0 +1,21 @@
+/* Reset total para que nada interfiera */
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;           /* elimina cualquier scrollbar */
+    background: #000;           /* fondo negro típico de Cesium cuando carga */
+}
+
+/* El contenedor ocupa TODO el viewport */
+#cesiumContainer {
+    position: fixed;            /* o absolute – fixed es más robusto contra scrolls */
+    inset: 0;                   /* top:0; right:0; bottom:0; left:0; en una sola línea */
+    width: 100vw;               /* 100% del ancho del viewport */
+    height: 100vh;              /* 100% de la altura del viewport */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
