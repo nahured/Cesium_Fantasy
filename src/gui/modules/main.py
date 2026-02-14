@@ -9,9 +9,9 @@
 
 import wx
 import wx.xrc
-from src.gui.modules.windows_tool_bar import ToolBar
-from src.gui.modules.windows_entity_container import WindowsEntityContainer
-from src.gui.modules.windows_web_view import WebView
+from src.gui.build_ui.windows_tool_bar import ToolBar
+from src.gui.build_ui.windows_entity_container import WindowsEntityContainer
+from src.gui.build_ui.windows_web_view import WebView
 
 import gettext
 _ = gettext.gettext

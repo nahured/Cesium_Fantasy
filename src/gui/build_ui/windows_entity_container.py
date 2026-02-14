@@ -4,5 +4,5 @@ from src.gui.build_ui.widgets.get_tile_tool import GetTileTool
 from src.gui.build_ui.widgets.tab_entity_manager import EntityManager
 from src.gui.build_ui.widgets.tab_layer_container import TabLayer
 
-class EntityManager(windows_entity_container.EntityManager):
+class WindowsEntityContainer(windows_entity_container.WindowsEntityContainer):
     pass

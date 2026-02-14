@@ -9,9 +9,9 @@
 
 import wx
 import wx.xrc
-from  src.gui.modules.widgets.tab_entity_manager import EntityManager
-from src.gui.modules.widgets.tab_layer_container import TabLayer
-from src.gui.modules.widgets.get_tile_tool import GetTileTool
+from  src.gui.build_ui.widgets.tab_entity_manager import EntityManager
+from src.gui.build_ui.widgets.tab_layer_container import TabLayer
+from src.gui.build_ui.widgets.get_tile_tool import GetTileTool
 
 import gettext
 _ = gettext.gettext

@@ -109,7 +109,7 @@
             <property name="gripper">0</property>
             <property name="hidden">0</property>
             <property name="id">wxID_ANY</property>
-            <property name="include">from src.gui.modules.windows_tool_bar import ToolBar</property>
+            <property name="include">from src.gui.build_ui.windows_tool_bar import ToolBar</property>
             <property name="max_size"></property>
             <property name="maximize_button">0</property>
             <property name="maximum_size"></property>
@@ -181,7 +181,7 @@
                 <property name="gripper">0</property>
                 <property name="hidden">0</property>
                 <property name="id">wxID_ANY</property>
-                <property name="include">from src.gui.modules.windows_entity_container import WindowsEntityContainer</property>
+                <property name="include">from src.gui.build_ui.windows_entity_container import WindowsEntityContainer</property>
                 <property name="max_size"></property>
                 <property name="maximize_button">0</property>
                 <property name="maximum_size"></property>
@@ -244,7 +244,7 @@
                 <property name="gripper">0</property>
                 <property name="hidden">0</property>
                 <property name="id">wxID_ANY</property>
-                <property name="include">from src.gui.modules.windows_web_view import WebView</property>
+                <property name="include">from src.gui.build_ui.windows_web_view import WebView</property>
                 <property name="max_size"></property>
                 <property name="maximize_button">0</property>
                 <property name="maximum_size"></property>

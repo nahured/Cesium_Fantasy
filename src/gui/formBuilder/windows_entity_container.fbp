@@ -217,7 +217,7 @@
                       <property name="gripper">0</property>
                       <property name="hidden">0</property>
                       <property name="id">wxID_ANY</property>
-                      <property name="include">from  src.gui.modules.widgets.tab_entity_manager import EntityManager</property>
+                      <property name="include">from  src.gui.build_ui.widgets.tab_entity_manager import EntityManager</property>
                       <property name="max_size"></property>
                       <property name="maximize_button">0</property>
                       <property name="maximum_size"></property>
@@ -344,7 +344,7 @@
                       <property name="gripper">0</property>
                       <property name="hidden">0</property>
                       <property name="id">wxID_ANY</property>
-                      <property name="include">from src.gui.modules.widgets.tab_layer_container import TabLayer</property>
+                      <property name="include">from src.gui.build_ui.widgets.tab_layer_container import TabLayer</property>
                       <property name="max_size"></property>
                       <property name="maximize_button">0</property>
                       <property name="maximum_size"></property>
@@ -430,16 +430,16 @@
                 <property name="window_extra_style"></property>
                 <property name="window_name"></property>
                 <property name="window_style">wxTAB_TRAVERSAL</property>
-                <object class="wxBoxSizer" expanded="false">
+                <object class="wxBoxSizer" expanded="true">
                   <property name="minimum_size"></property>
                   <property name="name">bSizer2</property>
                   <property name="orient">wxVERTICAL</property>
                   <property name="permission">none</property>
-                  <object class="sizeritem" expanded="false">
+                  <object class="sizeritem" expanded="true">
                     <property name="border">5</property>
                     <property name="flag">wxEXPAND | wxALL</property>
                     <property name="proportion">1</property>
-                    <object class="wxPanel" expanded="false">
+                    <object class="wxPanel" expanded="true">
                       <property name="BottomDockable">1</property>
                       <property name="LeftDockable">1</property>
                       <property name="RightDockable">1</property>
@@ -491,7 +491,7 @@
                       <property name="window_extra_style"></property>
                       <property name="window_name"></property>
                       <property name="window_style">wxTAB_TRAVERSAL</property>
-                      <object class="wxBoxSizer" expanded="false">
+                      <object class="wxBoxSizer" expanded="true">
                         <property name="minimum_size"></property>
                         <property name="name">bSizer31</property>
                         <property name="orient">wxVERTICAL</property>
@@ -532,7 +532,7 @@
                             <property name="gripper">0</property>
                             <property name="hidden">0</property>
                             <property name="id">wxID_ANY</property>
-                            <property name="include">from src.gui.modules.widgets.get_tile_tool import GetTileTool</property>
+                            <property name="include">from src.gui.build_ui.widgets.get_tile_tool import GetTileTool</property>
                             <property name="max_size"></property>
                             <property name="maximize_button">0</property>
                             <property name="maximum_size"></property>
