@@ -2,7 +2,7 @@ import threading
 
 import wx
 
-from src.gui.modules.main import Windows
+from src.gui.build_ui.main import Windows
 from src.server.app import run_server
 
 def star_windows():
