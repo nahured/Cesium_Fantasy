@@ -45,8 +45,8 @@ class GetTileTool ( wx.Panel ):
 
         bSizer41.Add( self.m_staticText1, 0, wx.ALL, 5 )
 
-        self.m_spinCtrl5 = wx.SpinCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.SP_ARROW_KEYS, 0, 10, 0 )
-        bSizer41.Add( self.m_spinCtrl5, 1, wx.ALL, 5 )
+        self.spin_level = wx.SpinCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.SP_ARROW_KEYS, 0, 10, 0 )
+        bSizer41.Add( self.spin_level, 1, wx.ALL, 5 )
 
 
         bSizer4.Add( bSizer41, 0, wx.EXPAND, 5 )
@@ -114,6 +114,8 @@ class GetTileTool ( wx.Panel ):
         bSizer52 = wx.BoxSizer( wx.HORIZONTAL )
 
         self.Drop_file = wx.StaticBitmap( self, wx.ID_ANY, wx.NullBitmap, wx.Point( -1,-1 ), wx.Size( -1,-1 ), 0 )
+        self.Drop_file.DragAcceptFiles( True )
+
         bSizer52.Add( self.Drop_file, 0, 0, 5 )
 
         self.file_picker = wx.FilePickerCtrl( self, wx.ID_ANY, wx.EmptyString, _(u"seleccionar archivo ctile"), _(u"*.ctile*"), wx.DefaultPosition, wx.DefaultSize, wx.FLP_DEFAULT_STYLE )
@@ -127,6 +129,9 @@ class GetTileTool ( wx.Panel ):
         self.Layout()
 
         # Connect Events
+        self.spin_level.Bind( wx.EVT_SPINCTRL, self.spin_level_OnSpinCtrl )
+        self.spin_level.Bind( wx.EVT_TEXT, self.spin_level_OnSpinCtrlText )
+        self.spin_level.Bind( wx.EVT_TEXT_ENTER, self.spin_level_OnTextEnter )
         self.spin_point_1_x.Bind( wx.EVT_SPINCTRL, self.spin_point_1_x_OnSpinCtrl )
         self.spin_point_1_x.Bind( wx.EVT_TEXT, self.spin_point_1_x_OnSpinCtrlText )
         self.spin_point_1_x.Bind( wx.EVT_TEXT_ENTER, self.spin_point_2_x_OnTextEnter )
@@ -142,6 +147,7 @@ class GetTileTool ( wx.Panel ):
         self.spin_point_2_y.Bind( wx.EVT_TEXT_ENTER, self.spin_point_2_y_OnTextEnter )
         self.button_pick_point_2.Bind( wx.EVT_BUTTON, self.button_pick_point_2_OnButtonClick )
         self.button_generate_collage.Bind( wx.EVT_BUTTON, self.button_generate_collage_OnButtonClick )
+        self.Drop_file.Bind( wx.EVT_DROP_FILES, self.Drop_file_OnDropFile )
         self.file_picker.Bind( wx.EVT_FILEPICKER_CHANGED, self.file_picker_OnFileChanged )
 
     def __del__( self ):
@@ -149,6 +155,15 @@ class GetTileTool ( wx.Panel ):
 
 
     # Virtual event handlers, override them in your derived class
+    def spin_level_OnSpinCtrl( self, event ):
+        event.Skip()
+
+    def spin_level_OnSpinCtrlText( self, event ):
+        event.Skip()
+
+    def spin_level_OnTextEnter( self, event ):
+        event.Skip()
+
     def spin_point_1_x_OnSpinCtrl( self, event ):
         event.Skip()
 
@@ -190,6 +205,9 @@ class GetTileTool ( wx.Panel ):
         event.Skip()
 
     def button_generate_collage_OnButtonClick( self, event ):
+        event.Skip()
+
+    def Drop_file_OnDropFile( self, event ):
         event.Skip()
 
     def file_picker_OnFileChanged( self, event ):

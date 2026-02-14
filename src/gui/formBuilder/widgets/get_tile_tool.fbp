@@ -249,7 +249,7 @@
           <property name="border">5</property>
           <property name="flag">wxEXPAND</property>
           <property name="proportion">0</property>
-          <object class="wxBoxSizer" expanded="false">
+          <object class="wxBoxSizer" expanded="true">
             <property name="minimum_size"></property>
             <property name="name">bSizer41</property>
             <property name="orient">wxHORIZONTAL</property>
@@ -359,7 +359,7 @@
                 <property name="minimize_button">0</property>
                 <property name="minimum_size"></property>
                 <property name="moveable">1</property>
-                <property name="name">m_spinCtrl5</property>
+                <property name="name">spin_level</property>
                 <property name="pane_border">1</property>
                 <property name="pane_position"></property>
                 <property name="pane_size"></property>
@@ -377,6 +377,9 @@
                 <property name="window_extra_style"></property>
                 <property name="window_name"></property>
                 <property name="window_style"></property>
+                <event name="OnSpinCtrl">spin_level_OnSpinCtrl</event>
+                <event name="OnSpinCtrlText">spin_level_OnSpinCtrlText</event>
+                <event name="OnTextEnter">spin_level_OnTextEnter</event>
               </object>
             </object>
           </object>
@@ -385,7 +388,7 @@
           <property name="border">5</property>
           <property name="flag">wxEXPAND</property>
           <property name="proportion">0</property>
-          <object class="wxBoxSizer" expanded="false">
+          <object class="wxBoxSizer" expanded="true">
             <property name="minimum_size"></property>
             <property name="name">bSizer5</property>
             <property name="orient">wxHORIZONTAL</property>
@@ -1352,7 +1355,7 @@
                 <property name="dock">Dock</property>
                 <property name="dock_fixed">0</property>
                 <property name="docking">Left</property>
-                <property name="drag_accept_files">0</property>
+                <property name="drag_accept_files">1</property>
                 <property name="enabled">1</property>
                 <property name="fg"></property>
                 <property name="floatable">1</property>
@@ -1383,6 +1386,7 @@
                 <property name="window_extra_style"></property>
                 <property name="window_name"></property>
                 <property name="window_style"></property>
+                <event name="OnDropFiles">Drop_file_OnDropFile</event>
               </object>
             </object>
             <object class="sizeritem" expanded="false">
