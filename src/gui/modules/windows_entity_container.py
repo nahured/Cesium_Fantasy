@@ -9,6 +9,8 @@
 
 import wx
 import wx.xrc
+from  src.gui.modules.widgets.tab_entity_manager import EntityManager
+from src.gui.modules.widgets.tab_layer_container import TabLayer
 from src.gui.modules.widgets.get_tile_tool import GetTileTool
 
 import gettext
@@ -29,30 +31,8 @@ class WindowsEntityContainer ( wx.Panel ):
         self.tab_entity = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer4 = wx.BoxSizer( wx.VERTICAL )
 
-        self.tree_entity = wx.TreeCtrl( self.tab_entity, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TR_DEFAULT_STYLE )
-        bSizer4.Add( self.tree_entity, 1, wx.ALL|wx.EXPAND, 5 )
-
-        self.m_panel5 = wx.Panel( self.tab_entity, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-        bSizer6 = wx.BoxSizer( wx.HORIZONTAL )
-
-        self.m_staticText1 = wx.StaticText( self.m_panel5, wx.ID_ANY, _(u"entidad"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.m_staticText1.Wrap( -1 )
-
-        bSizer6.Add( self.m_staticText1, 0, wx.ALL, 5 )
-
-        self.entity_selected_name = wx.StaticText( self.m_panel5, wx.ID_ANY, _(u"temp_item"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.entity_selected_name.Wrap( -1 )
-
-        bSizer6.Add( self.entity_selected_name, 0, wx.ALL, 5 )
-
-        self.button_entity_edit = wx.Button( self.m_panel5, wx.ID_ANY, _(u"editar"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer6.Add( self.button_entity_edit, 0, wx.ALL, 5 )
-
-
-        self.m_panel5.SetSizer( bSizer6 )
-        self.m_panel5.Layout()
-        bSizer6.Fit( self.m_panel5 )
-        bSizer4.Add( self.m_panel5, 0, wx.EXPAND |wx.ALL, 5 )
+        self.TabEntity = EntityManager(self.tab_entity)
+        bSizer4.Add( self.TabEntity, 1, wx.ALL|wx.EXPAND, 5 )
 
 
         self.tab_entity.SetSizer( bSizer4 )
@@ -62,18 +42,8 @@ class WindowsEntityContainer ( wx.Panel ):
         self.tab_layer = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer7 = wx.BoxSizer( wx.VERTICAL )
 
-        self.m_scrolledWindow1 = wx.ScrolledWindow( self.tab_layer, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.HSCROLL|wx.VSCROLL )
-        self.m_scrolledWindow1.SetScrollRate( 5, 5 )
-        bSizer7.Add( self.m_scrolledWindow1, 1, wx.EXPAND |wx.ALL, 5 )
-
-        self.m_panel6 = wx.Panel( self.tab_layer, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-        bSizer8 = wx.BoxSizer( wx.VERTICAL )
-
-
-        self.m_panel6.SetSizer( bSizer8 )
-        self.m_panel6.Layout()
-        bSizer8.Fit( self.m_panel6 )
-        bSizer7.Add( self.m_panel6, 1, wx.EXPAND |wx.ALL, 5 )
+        self.tab_layer_container = TabLayer(self.tab_layer)
+        bSizer7.Add( self.tab_layer_container, 1, wx.ALL|wx.EXPAND, 5 )
 
 
         self.tab_layer.SetSizer( bSizer7 )
@@ -110,12 +80,6 @@ class WindowsEntityContainer ( wx.Panel ):
         # Connect Events
         self.m_notebook1.Bind( wx.EVT_NOTEBOOK_PAGE_CHANGED, self.OnNoteBookPageChanged )
         self.m_notebook1.Bind( wx.EVT_NOTEBOOK_PAGE_CHANGING, self.OnNoteBookPageChangin )
-        self.tree_entity.Bind( wx.EVT_TREE_GET_INFO, self.tree_entity_OnTreeGetInfo )
-        self.tree_entity.Bind( wx.EVT_TREE_ITEM_ACTIVATED, self.tree_entity_OnItemActived )
-        self.tree_entity.Bind( wx.EVT_TREE_ITEM_GETTOOLTIP, self.tree_entity_OnTreeItemGetToolTip )
-        self.tree_entity.Bind( wx.EVT_TREE_ITEM_RIGHT_CLICK, self.tree_entity_OnTreeItemRigthClick )
-        self.tree_entity.Bind( wx.EVT_TREE_SET_INFO, self.tree_entity_onTreeSetInfo )
-        self.tree_entity.Bind( wx.EVT_TREE_STATE_IMAGE_CLICK, self.tree_entity_OnTreeStateImageClick )
 
     def __del__( self ):
         pass
@@ -126,24 +90,6 @@ class WindowsEntityContainer ( wx.Panel ):
         event.Skip()
 
     def OnNoteBookPageChangin( self, event ):
-        event.Skip()
-
-    def tree_entity_OnTreeGetInfo( self, event ):
-        event.Skip()
-
-    def tree_entity_OnItemActived( self, event ):
-        event.Skip()
-
-    def tree_entity_OnTreeItemGetToolTip( self, event ):
-        event.Skip()
-
-    def tree_entity_OnTreeItemRigthClick( self, event ):
-        event.Skip()
-
-    def tree_entity_onTreeSetInfo( self, event ):
-        event.Skip()
-
-    def tree_entity_OnTreeStateImageClick( self, event ):
         event.Skip()
 
 
