@@ -113,14 +113,14 @@ class GetTileTool ( wx.Panel ):
 
         bSizer52 = wx.BoxSizer( wx.HORIZONTAL )
 
-        self.Drop_file = wx.StaticBitmap( self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer52.Add( self.Drop_file, 1, wx.ALL|wx.EXPAND, 5 )
+        self.Drop_file = wx.StaticBitmap( self, wx.ID_ANY, wx.NullBitmap, wx.Point( -1,-1 ), wx.Size( -1,-1 ), 0 )
+        bSizer52.Add( self.Drop_file, 0, 0, 5 )
 
         self.file_picker = wx.FilePickerCtrl( self, wx.ID_ANY, wx.EmptyString, _(u"seleccionar archivo ctile"), _(u"*.ctile*"), wx.DefaultPosition, wx.DefaultSize, wx.FLP_DEFAULT_STYLE )
         bSizer52.Add( self.file_picker, 0, wx.ALL, 5 )
 
 
-        bSizer4.Add( bSizer52, 1, wx.EXPAND, 5 )
+        bSizer4.Add( bSizer52, 0, wx.EXPAND, 5 )
 
 
         self.SetSizer( bSizer4 )

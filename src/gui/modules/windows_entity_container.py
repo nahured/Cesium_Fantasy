@@ -38,7 +38,7 @@ class WindowsEntityContainer ( wx.Panel ):
         self.tab_entity.SetSizer( bSizer4 )
         self.tab_entity.Layout()
         bSizer4.Fit( self.tab_entity )
-        self.m_notebook1.AddPage( self.tab_entity, _(u"entidades"), True )
+        self.m_notebook1.AddPage( self.tab_entity, _(u"entidades"), False )
         self.tab_layer = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer7 = wx.BoxSizer( wx.VERTICAL )
 
@@ -69,7 +69,7 @@ class WindowsEntityContainer ( wx.Panel ):
         self.tab_tool.SetSizer( bSizer2 )
         self.tab_tool.Layout()
         bSizer2.Fit( self.tab_tool )
-        self.m_notebook1.AddPage( self.tab_tool, _(u"Herramientas"), False )
+        self.m_notebook1.AddPage( self.tab_tool, _(u"Herramientas"), True )
 
         bSizer3.Add( self.m_notebook1, 1, wx.EXPAND |wx.ALL, 5 )
 

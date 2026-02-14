@@ -24,8 +24,8 @@ class EntityManager ( wx.Panel ):
 
         bSizer9 = wx.BoxSizer( wx.VERTICAL )
 
-        self.m_treeCtrl3 = wx.TreeCtrl( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TR_DEFAULT_STYLE )
-        bSizer9.Add( self.m_treeCtrl3, 1, wx.ALL|wx.EXPAND, 5 )
+        self.tree_entity = wx.TreeCtrl( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TR_DEFAULT_STYLE )
+        bSizer9.Add( self.tree_entity, 1, wx.ALL|wx.EXPAND, 5 )
 
         self.m_panel7 = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer10 = wx.BoxSizer( wx.HORIZONTAL )
@@ -60,6 +60,8 @@ class EntityManager ( wx.Panel ):
         self.Layout()
 
         # Connect Events
+        self.tree_entity.Bind( wx.EVT_TREE_ITEM_ACTIVATED, self.tree_entity_OnTreeItemActived )
+        self.tree_entity.Bind( wx.EVT_TREE_ITEM_RIGHT_CLICK, self.tree_entity_OnTreeItemRightClick )
         self.button_new.Bind( wx.EVT_BUTTON, self.button_new_OnButtonClick )
         self.button_edit.Bind( wx.EVT_BUTTON, self.button_edit_OnButtonClick )
 
@@ -68,6 +70,12 @@ class EntityManager ( wx.Panel ):
 
 
     # Virtual event handlers, override them in your derived class
+    def tree_entity_OnTreeItemActived( self, event ):
+        event.Skip()
+
+    def tree_entity_OnTreeItemRightClick( self, event ):
+        event.Skip()
+
     def button_new_OnButtonClick( self, event ):
         event.Skip()
 
