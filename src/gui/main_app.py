@@ -5,6 +5,9 @@ import wx
 from src.gui.build_ui.main import Windows
 from src.server.app import run_server
 
+# >------------ LOAD MANAGERS ------------<
+import src.utils_py.managers
+
 def star_windows():
     app = wx.App()
     app.DATA_BASE = {

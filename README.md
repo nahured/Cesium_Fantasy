@@ -47,6 +47,9 @@ cesium_fantasy/
 │   │           └── utils.js        # Ejemplo de utilidades JS
 │   │
 │   └── utils_py/                   # Utilidades en Python
+│       ├── managers/               # esta carpeta se utilizara para crear manejadores a travez de senales con el modulo pypubsub de python
+│       │   ├── Images_manager/     # no te tiene que llamar directamente a estas carpetas si no que todo tiene que pasar por medio de pypubsub
+│       │   │   └── get_image.py    # estas archivos tienen que estar registrados en __init__.py para que se registren todos en pypubsub
 │       ├── __init__.py
 │       ├── data_handler.py         # Manejo de datos
 │       └── util.py                 # Logging y utilidades generales

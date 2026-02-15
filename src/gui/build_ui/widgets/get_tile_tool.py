@@ -1,4 +1,6 @@
 import wx
+from pubsub import pub
+
 import src.gui.modules.widgets.get_tile_tool as get_tile_tool
 import src.utils_py.wx_utils as wx_utils
 
@@ -32,3 +34,13 @@ class GetTileTool(get_tile_tool.GetTileTool):
         self.spin_point_1_y.Max = y_max
         self.spin_point_2_x.Max = x_max
         self.spin_point_2_y.Max = y_max
+    
+    def button_generate_collage_OnButtonClick(self,event):
+        print("get iamge")
+        img = {
+            "mode":"simple",
+            "point_1": [self.spin_point_1_x.GetValue(),self.spin_point_1_y.GetValue()],
+            "point_2": [self.spin_point_2_x.GetValue(),self.spin_point_2_y.GetValue()]
+        }
+        
+        pub.sendMessage("generate_image",img=img)
