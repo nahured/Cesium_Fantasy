@@ -1,5 +1,7 @@
 # Cesium fantasy
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/nahured/Cesium_Fantasy)
+
 > Descripcion: Programa para facilitar la creacion de mapas de fantasia para el motor [Cesiumjs](https://cesium.com/platform/cesiumjs/)
 
 ---
