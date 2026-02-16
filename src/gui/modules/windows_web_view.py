@@ -21,3 +21,4 @@ class WebView():
         self.browser = wx.html2.WebView.New(parent)
         self.url = "http://127.0.0.1:6969"
         self.browser.LoadURL(self.url)
+        wx.GetApp().web_browser = self.browser
