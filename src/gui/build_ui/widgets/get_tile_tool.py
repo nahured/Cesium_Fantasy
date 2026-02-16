@@ -1,5 +1,6 @@
 import wx
 from pubsub import pub
+import wx.html2
 
 import src.gui.modules.widgets.get_tile_tool as get_tile_tool
 import src.utils_py.wx_utils as wx_utils
@@ -13,7 +14,12 @@ class GetTileTool(get_tile_tool.GetTileTool):
         self.Drop_file.SetSize(100,100)
 
         self.set_max_spin_value()
+        pub.subscribe(self.ready,'ui-finish')
     
+    def ready(self):
+        self.browser:wx.html2.WebView = wx.GetApp().web_browser
+        pub.unsubscribe(self.ready,'ui-finish')
+
     def spin_level_OnSpinCtrl(self, event):
         self.set_max_spin_value()
         return super().spin_level_OnSpinCtrl(event)
@@ -44,3 +50,7 @@ class GetTileTool(get_tile_tool.GetTileTool):
         }
         
         pub.sendMessage("generate_image",img=img)
+    
+    def button_pick_point_1_OnButtonClick(self,event):
+        self.browser.RunScript('get_mouse_scene_position()')
+        pass
