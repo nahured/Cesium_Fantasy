@@ -2,8 +2,12 @@ from flask import Flask, render_template
 from src.server.server_py.blueprints.routes_base import routes_base
 from src.server.server_py.blueprints.routes_api import routes_api
 import logging
-log = logging.getLogger('werkzeug')
-log.setLevel(logging.ERROR)
+
+def loggin():
+    log = logging.getLogger('werkzeug')
+    log.setLevel(logging.ERROR)
+
+loggin()
 
 def run_server():
     app = Flask(__name__)

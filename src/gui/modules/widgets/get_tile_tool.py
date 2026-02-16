@@ -45,7 +45,7 @@ class GetTileTool ( wx.Panel ):
 
         bSizer41.Add( self.m_staticText1, 0, wx.ALL, 5 )
 
-        self.spin_level = wx.SpinCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.SP_ARROW_KEYS, 0, 10, 0 )
+        self.spin_level = wx.SpinCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.SP_ARROW_KEYS, 0, 20, 0 )
         bSizer41.Add( self.spin_level, 1, wx.ALL, 5 )
 
 

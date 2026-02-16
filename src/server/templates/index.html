@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='js/modules/Cesiumjs/Build/Cesium/Widgets/widgets.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     <script src="{{ url_for('static', filename='js/modules/cesiumjs/Build/Cesium/Cesium.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/cesium_inputs_manager.js') }}"></script>
 
 
     <title>Cesiumjs</title>
@@ -28,7 +27,11 @@
             navigationHelpButton: false,
             shouldAnimate: true,
         });
-        viewer.creditDisplay.destroy(); 
+        viewer.creditDisplay.destroy();
+        viewer.imageryLayers.addImageryProvider(new Cesium.TileCoordinatesImageryProvider({
+            color: Cesium.Color.RED // Color del borde y texto
+        }));
     </script>
+    <script src="{{ url_for('static', filename='js/cesium_inputs_manager.js') }}"></script>
 </body>
 </html>
