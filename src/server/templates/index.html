@@ -27,7 +27,11 @@
             navigationHelpButton: false,
             shouldAnimate: true,
         });
-        viewer.creditDisplay.destroy(); 
+        viewer.creditDisplay.destroy();
+        viewer.imageryLayers.addImageryProvider(new Cesium.TileCoordinatesImageryProvider({
+            color: Cesium.Color.RED // Color del borde y texto
+        }));
     </script>
+    <script src="{{ url_for('static', filename='js/cesium_inputs_manager.js') }}"></script>
 </body>
 </html>
