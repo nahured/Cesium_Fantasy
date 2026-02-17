@@ -48,9 +48,7 @@ class TileCoord:
         if self.invert_y:
             y = float((self.y+v)*d_y+90)
         else:
-            y = float((self.y+v)*d_y-90)
-        print(f"{d_x=} {d_y=}\t| {x=} {y=}\t| {h=} {v=}\t| {self.x=} {self.y=}\t| {level=}")
-        
+            y = float((self.y+v)*d_y-90)        
         return Degrees(x,y)
 
         

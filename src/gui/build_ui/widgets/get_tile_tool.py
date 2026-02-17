@@ -20,17 +20,6 @@ class GetTileTool(get_tile_tool.GetTileTool):
         self.point_selected = 0
         self.set_max_spin_value()
 
-        self.grid_tiles = {
-            "p1":{
-                "x":0,
-                "y":0
-            },
-            "p2":{
-                "x":0,
-                "y":0
-            }
-        }
-
         #pub.subscribe(self.ubdate_grid_tiles,'grid-update')
         pub.subscribe(self.ready,'ui-finish')
     
@@ -50,58 +39,44 @@ class GetTileTool(get_tile_tool.GetTileTool):
     
 
     def update_grid_tiles(self):
-        print("-"*20)
         tile1=cc.TileCoord(self.spin_point_1_x.GetValue(),self.spin_point_1_y.GetValue())
         tile2=cc.TileCoord(self.spin_point_2_x.GetValue(),self.spin_point_2_y.GetValue())
         rect = cc.Rect().get_rect_cornert_from_tile(tile1,tile2,self.spin_level.GetValue())
-        print()
         script = f"set_tile_rect({rect['Oeste']},{rect['Sur']},{rect['Este']},{rect['Norte']})"
-        print(f"set_tile_rect[Oeste, Sur, Este, Norte]")
-        print(script)
         self.browser.RunScript(script)
 
     # ------ TILES ------- #
     
     def degrees_to_tile(self,data):
         degrees = data['data']['degrees']
-        p_x = (360)/2**(self.spin_level.GetValue()+1)
-        p_y = 180/2**self.spin_level.GetValue()
-        # ya que las coordenadas del planeta no van de x:0->360 y:0->180 sino que x:-180->180 y:-90->90
-        # se tiene que ajustar el desface creado
-        x = int(np.floor(abs((degrees['longitude']+180) / p_x)))
-        y = int(np.floor(abs((degrees['latitude']-90) / p_y)))
+        point = cc.TileCoord().from_degrres(cc.Degrees(degrees['longitude'],degrees['latitude']),self.spin_level.GetValue())
         if self.point_selected == 1:
-            self.set_point_1_value([x,y])
+            self.set_point_1_value(point)
         elif self.point_selected == 2:
-            self.set_point_2_value([x,y])
+            self.set_point_2_value(point)
         self.point_selected = 0
-        pub.sendMessage('grid-update',data=self.grid_tiles) 
         pub.unsubscribe(self.degrees_to_tile,'mouse_click_signal')
 
     # >------------- seteamos nuevos valores -------------< #
-    def set_point_1_value(self,vector_new_value):
-        self.grid_tiles['p1']['x'] = vector_new_value[0]
-        self.grid_tiles['p1']['y'] = vector_new_value[1]
-        self.set_spin_point_1_x_value(vector_new_value[0])
-        self.set_spin_point_1_y_value(vector_new_value[1])
+    def set_point_1_value(self,vector_new_value:cc.TileCoord):
+        self.set_spin_point_1_x_value(vector_new_value.x)
+        self.set_spin_point_1_y_value(vector_new_value.y)
     
-    def set_point_2_value(self,vector_new_value):
-        self.grid_tiles['p2']['x'] = vector_new_value[0]
-        self.grid_tiles['p2']['y'] = vector_new_value[1]
-        self.set_spin_point_2_x_value(vector_new_value[0])
-        self.set_spin_point_2_y_value(vector_new_value[1])
+    def set_point_2_value(self,vector_new_value:cc.TileCoord):
+        self.set_spin_point_2_x_value(vector_new_value.x)
+        self.set_spin_point_2_y_value(vector_new_value.y)
     
     def set_spin_point_1_x_value(self,new_value):
-        self.spin_point_1_x.SetValue(new_value)
+        self.spin_point_1_x.SetValue(int(new_value))
 
     def set_spin_point_1_y_value(self,new_value):
-        self.spin_point_1_y.SetValue(new_value)
+        self.spin_point_1_y.SetValue(int(new_value))
 
     def set_spin_point_2_x_value(self,new_value):
-        self.spin_point_2_x.SetValue(new_value)
+        self.spin_point_2_x.SetValue(int(new_value))
 
     def set_spin_point_2_y_value(self,new_value):
-        self.spin_point_2_y.SetValue(new_value)
+        self.spin_point_2_y.SetValue(int(new_value))
 
     
     def set_max_spin_value(self):
@@ -117,7 +92,6 @@ class GetTileTool(get_tile_tool.GetTileTool):
     
     def button_generate_collage_OnButtonClick(self,event):
         self.update_grid_tiles()
-        print("get iamge")
         img = {
             "mode":"simple",
             "point_1": [self.spin_point_1_x.GetValue(),self.spin_point_1_y.GetValue()],

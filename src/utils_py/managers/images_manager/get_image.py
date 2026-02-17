@@ -1,7 +1,8 @@
 from pubsub import pub
 
 def get_image(img,**extra):
-    print(img)
+    #print(img)
+    pass
 
 
 
