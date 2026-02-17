@@ -93,7 +93,7 @@ function set_tile_rect(x1,x2,x3,x4){
             material: Cesium.Color.RED.withAlpha(0.5),
             outline: true,
             outlineColor: Cesium.Color.BLACK,
-            height: 5000 // Altura sobre el nivel del mar
+            height: 0 // Altura sobre el nivel del mar
             },
         })
     }

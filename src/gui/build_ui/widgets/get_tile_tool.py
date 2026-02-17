@@ -7,6 +7,8 @@ import numpy as np
 import src.gui.modules.widgets.get_tile_tool as get_tile_tool
 import src.utils_py.wx_utils as wx_utils
 
+import src.utils_py.cesium.cartography as cc #Cesium Cartography
+
 class GetTileTool(get_tile_tool.GetTileTool):
     def __init__(self, parent):
         super().__init__(parent)
@@ -47,12 +49,13 @@ class GetTileTool(get_tile_tool.GetTileTool):
         print(event.GetFiles())
     
 
-    def ubdate_grid_tiles(self,data):
-        Oeste = (self.spin_point_1_x.GetValue() * (360/2**(self.spin_level.GetValue()+1)))-180
-        Norte = (self.spin_point_2_y.GetValue() * (180/2**self.spin_level.GetValue()))+90
-        Este = (self.spin_point_2_x.GetValue() * (360/2**(self.spin_level.GetValue()+1)))-90
-        Sur = (self.spin_point_1_y.GetValue() * (180/2**self.spin_level.GetValue()))-90
-        script = f"set_tile_rect({Oeste},{Sur},{Este},{Norte})"
+    def update_grid_tiles(self):
+        print("-"*20)
+        tile1=cc.TileCoord(self.spin_point_1_x.GetValue(),self.spin_point_1_y.GetValue())
+        tile2=cc.TileCoord(self.spin_point_2_x.GetValue(),self.spin_point_2_y.GetValue())
+        rect = cc.Rect().get_rect_cornert_from_tile(tile1,tile2,self.spin_level.GetValue())
+        print()
+        script = f"set_tile_rect({rect['Oeste']},{rect['Sur']},{rect['Este']},{rect['Norte']})"
         print(f"set_tile_rect[Oeste, Sur, Este, Norte]")
         print(script)
         self.browser.RunScript(script)
@@ -113,7 +116,7 @@ class GetTileTool(get_tile_tool.GetTileTool):
         self.spin_point_2_y.Max = y_max
     
     def button_generate_collage_OnButtonClick(self,event):
-        self.ubdate_grid_tiles(self.grid_tiles)
+        self.update_grid_tiles()
         print("get iamge")
         img = {
             "mode":"simple",

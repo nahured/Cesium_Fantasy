@@ -1,17 +1,5 @@
 import numpy as np
 
-
-
-#
-#
-#
-#
-#
-#
-#
-#
-
-
 class TileCoord:
     def __init__(self,x:int=0,y:int=0):
         self.x:int = x
@@ -30,10 +18,9 @@ class TileCoord:
         """
         retorna la division de cuanto grados mide un tile
         """
-        l_x,l_y = self.get_tile_count(level)
-        x = float(360/l_x)
+        _,l_y = self.get_tile_count(level)
         y = float(180/l_y)
-        return x,y
+        return y,y
 
     def from_degrres(self,degrees:"Degrees",level) -> "TileCoord":
         """
@@ -52,23 +39,24 @@ class TileCoord:
 
         return TileCoord(x,y)
     
-    def to_degrees(self,h:float,v:float,level) -> "Degrees":
+    def to_degrees(self,level,h:float=0.0,v:float=0.0) -> "Degrees":
         """
         esta funcion te devuelve un Degrees a partir del tileCoord
         """
         d_x,d_y = self.get_tile_dvision(level)
-        x = float((self.x+h)*d_x-180)
+        x = float(((self.x+h)*d_x))
         if self.invert_y:
             y = float((self.y+v)*d_y+90)
         else:
             y = float((self.y+v)*d_y-90)
+        print(f"{d_x=} {d_y=}\t| {x=} {y=}\t| {h=} {v=}\t| {self.x=} {self.y=}\t| {level=}")
         
         return Degrees(x,y)
 
         
 
 class Degrees:
-    def __init__(self,longitude:float,latitude:float):
+    def __init__(self,longitude:float=0.0,latitude:float=0.0):
         self.longitude:float = longitude
         self.latitude:float = latitude
     
@@ -87,16 +75,19 @@ class Rect:
         self.point_1:Degrees = point_1
         self.point_2:Degrees = point_2
     
-    def from_tile(self,tile_1:"TileCoord",tile_2:"TileCoord") -> "Rect":
-        point_1 = tile_1.to_degrees()
-        point_2 = tile_1.to_degrees(1,1)
+    def from_tile(self,tile_1:"TileCoord",tile_2:"TileCoord",level) -> "Rect":
+        point_1 = tile_1.to_degrees(level)
+        point_2 = tile_2.to_degrees(level,1,1)
         return Rect(point_1,point_2)
     
-    def get_rect(self) -> dict:
+    def get_rect_cornert(self) -> dict:
         rect = {
-        "Oeste" : self.point_1.latitude,
-        "Este" : self.point_2.latitude,
-        "Norte" : self.point_2.longitude,
-        "Sur" : self.point_1.longitude
+        "Oeste" : self.point_1.longitude,
+        "Este" : self.point_2.longitude,
+        "Norte" : self.point_2.latitude,
+        "Sur" : self.point_1.latitude
         }
         return rect
+    
+    def get_rect_cornert_from_tile(self,tile_1:"TileCoord",tile_2:"TileCoord",level) -> "Rect":
+        return self.from_tile(tile_1,tile_2,level).get_rect_cornert()
