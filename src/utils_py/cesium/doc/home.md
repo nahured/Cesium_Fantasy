@@ -4,7 +4,7 @@
 - [Descripcion](#descripcion)
 - [Matematicas](#matematicas)
     - [tiles](#matematicas-tiles)
-        [coordenadas](#matematicas-tiles-coordenadas)
+       - [coordenadas](#matematicas-tiles-coordenadas)
     - [coordenada](#matematicas-coordenada)
 
 <h2 id="descripcion" align='right' style="text-decoration:underline;"> Descripcion </h2>
