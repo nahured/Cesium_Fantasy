@@ -5,6 +5,7 @@
 - [Matematicas](#matematicas)
     - [tiles](#matematicas-tiles)
         [coordenadas](#matematicas-tiles-coordenadas)
+    - [coordenada](#matematicas-coordenada)
 
 <h2 id="descripcion" align='right' style="text-decoration:underline;"> Descripcion </h2>
 
@@ -188,5 +189,44 @@ $$
 world_{x,y}^{\mathrm{tile}} = \begin{Bmatrix}
 x = \left \lfloor \left | \frac{(long+180).2^{l+1}}{360}\right |\right \rfloor \\
 y = \left \lfloor \left | \frac{(lat-90).2^{l}}{180}\right |\right \rfloor 
+\end{Bmatrix}
+$$
+
+<h3 id="matematicas-coordenada"> coordenadas </h3>
+
+[inicio](#inicio)
+
+ahora tenemos que dar la vuelta y es optener la coordenada de un tile con un desface $h - v$ que es un valor de $0 \leftrightarrow 1$ siendo el centro $0.5$ 
+
+> [!NOTE] 
+> recordar que el 90 es positivo o negativo dependiendo del orden en que cesium carga el valor $y$
+
+$$
+world_{x,y}^{\mathrm{tile}} = \begin{Bmatrix}
+x = \frac{(long+180).2^{l+1}}{360} \\
+y = \frac{(lat-90).2^{l}}{180}
+\end{Bmatrix}
+$$
+
+$$
+world_{x,y}^{\mathrm{tile}} = \begin{Bmatrix}
+x.\frac{360}{2^{l+1}} = long+180 \\
+y.\frac{180}{2^{l}} = lat-90
+\end{Bmatrix}
+$$
+
+$$
+world_{x,y}^{\mathrm{tile}} = \begin{Bmatrix}
+x.\frac{360}{2^{l+1}}-180 = long \\
+y.\frac{180}{2^{l}}+90 = lat
+\end{Bmatrix}
+$$
+
+ahora le vamos a agregar el desface con lo siguiente podremos optener la coordenada de cada punto del tile
+
+$$
+world_{x,y}^{\mathrm{tile}} = \begin{Bmatrix}
+(x+h).\frac{360}{2^{l+1}}-180 = long \\
+(y+v).\frac{180}{2^{l}}+90 = lat
 \end{Bmatrix}
 $$
