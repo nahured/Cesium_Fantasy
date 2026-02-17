@@ -3,6 +3,7 @@ from pubsub import pub
 import wx.html2
 import numpy as np
 
+
 import src.gui.modules.widgets.get_tile_tool as get_tile_tool
 import src.utils_py.wx_utils as wx_utils
 
@@ -16,6 +17,19 @@ class GetTileTool(get_tile_tool.GetTileTool):
 
         self.point_selected = 0
         self.set_max_spin_value()
+
+        self.grid_tiles = {
+            "p1":{
+                "x":0,
+                "y":0
+            },
+            "p2":{
+                "x":0,
+                "y":0
+            }
+        }
+
+        #pub.subscribe(self.ubdate_grid_tiles,'grid-update')
         pub.subscribe(self.ready,'ui-finish')
     
     def ready(self):
@@ -32,6 +46,19 @@ class GetTileTool(get_tile_tool.GetTileTool):
         """
         print(event.GetFiles())
     
+
+    def ubdate_grid_tiles(self,data):
+        Oeste = (self.spin_point_1_x.GetValue() * (360/2**(self.spin_level.GetValue()+1)))-180
+        Norte = (self.spin_point_2_y.GetValue() * (180/2**self.spin_level.GetValue()))+90
+        Este = (self.spin_point_2_x.GetValue() * (360/2**(self.spin_level.GetValue()+1)))-90
+        Sur = (self.spin_point_1_y.GetValue() * (180/2**self.spin_level.GetValue()))-90
+        script = f"set_tile_rect({Oeste},{Sur},{Este},{Norte})"
+        print(f"set_tile_rect[Oeste, Sur, Este, Norte]")
+        print(script)
+        self.browser.RunScript(script)
+
+    # ------ TILES ------- #
+    
     def degrees_to_tile(self,data):
         degrees = data['data']['degrees']
         p_x = (360)/2**(self.spin_level.GetValue()+1)
@@ -44,16 +71,20 @@ class GetTileTool(get_tile_tool.GetTileTool):
             self.set_point_1_value([x,y])
         elif self.point_selected == 2:
             self.set_point_2_value([x,y])
-        self.point_selected = 0 
- 
+        self.point_selected = 0
+        pub.sendMessage('grid-update',data=self.grid_tiles) 
         pub.unsubscribe(self.degrees_to_tile,'mouse_click_signal')
 
     # >------------- seteamos nuevos valores -------------< #
     def set_point_1_value(self,vector_new_value):
+        self.grid_tiles['p1']['x'] = vector_new_value[0]
+        self.grid_tiles['p1']['y'] = vector_new_value[1]
         self.set_spin_point_1_x_value(vector_new_value[0])
         self.set_spin_point_1_y_value(vector_new_value[1])
     
     def set_point_2_value(self,vector_new_value):
+        self.grid_tiles['p2']['x'] = vector_new_value[0]
+        self.grid_tiles['p2']['y'] = vector_new_value[1]
         self.set_spin_point_2_x_value(vector_new_value[0])
         self.set_spin_point_2_y_value(vector_new_value[1])
     
@@ -82,6 +113,7 @@ class GetTileTool(get_tile_tool.GetTileTool):
         self.spin_point_2_y.Max = y_max
     
     def button_generate_collage_OnButtonClick(self,event):
+        self.ubdate_grid_tiles(self.grid_tiles)
         print("get iamge")
         img = {
             "mode":"simple",

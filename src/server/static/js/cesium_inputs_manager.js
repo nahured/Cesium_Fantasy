@@ -75,3 +75,26 @@ function click_event(movement) {
 
 // ¡Aquí está la línea que no funcionaba bien!
 handler.setInputAction(click_event, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+
+
+// DECORACIONES
+
+function set_tile_rect(x1,x2,x3,x4){
+    const entity = viewer.entities.getById('mi-rectangulo-unico')
+    if (entity) {
+        entity.rectangle.coordinates = Cesium.Rectangle.fromDegrees(x1,x2,x3,x4)
+    } else {
+        const redRectangle = viewer.entities.add({
+            id: 'mi-rectangulo-unico',
+            name: 'el grid contenedor de los tiles',
+            rectangle: {
+            // Definimos los límites: [Oeste, Sur, Este, Norte] en grados
+            coordinates: Cesium.Rectangle.fromDegrees(x1,x2,x3,x4),
+            material: Cesium.Color.RED.withAlpha(0.5),
+            outline: true,
+            outlineColor: Cesium.Color.BLACK,
+            height: 5000 // Altura sobre el nivel del mar
+            },
+        })
+    }
+};
