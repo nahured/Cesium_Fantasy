@@ -172,3 +172,4 @@ cython_debug/
 src/server/static/js/modules/Cesiumjs/*
 !src/server/static/js/modules/Cesiumjs/doc.md
 cesium.zip
+tests/*
