@@ -1,0 +1,104 @@
+
+
+:root {
+    --tool-bar-background-color:rgb(51, 46, 58);
+    --tool-bar-background-color-closed:rgb(51, 46, 58,0.0);
+    --tool-bar-hover-color:rgb(197, 196, 177);
+    --tool-bar-button-li:rgb(197, 196, 177);
+    --tool-bar-button-li-hover:rgb(209, 207, 158);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+.tool-bar-base {
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 200px;
+    max-height: 80vh;
+    padding-bottom: 15px; 
+    border-radius: 10px;
+    background-color: var(--tool-bar-background-color);
+    z-index: 10;
+    transition: width 0.5s ease-in-out , height 0.5s ease , background-color 0.5s ease-out;
+}
+
+.tool-bar-base.close{
+    width: 80px;
+    height:80px;
+    background-color: var(--tool-bar-background-color-closed);
+}
+
+
+
+.title-icon {
+    overflow: visible;
+    position: absolute;
+    margin: 20px;
+    width: 50px;
+    height: 50px;
+    stroke: black;
+    fill: none;
+}
+
+.title-icon.close {
+    opacity: 25%;
+    overflow: visible;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    stroke: gray;
+    fill: none;
+}
+
+.title-icon:hover{
+    stroke: var(--tool-bar-hover-color);
+    opacity: 100%;
+    cursor: pointer;
+}
+
+.tool-bar-button-list{
+    height: 90%;
+    display: block;
+    margin-top: 90px;
+    padding-left: 20px;
+    list-style: none;
+    transition: display 0.5s;
+}
+
+.tool-bar-button-list.close{
+    display: none;
+}
+
+.tool-bar-button-li{
+    background-color: var(--tool-bar-button-li);
+    width: 90%;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.tool-bar-button-li:hover{
+    background-color: var(--tool-bar-button-li-hover);
+}
+
+.button-icon{
+    width: 50px;
+    height: 50px;
+    stroke: black;
+    fill: none;
+}
+
+.tool-bar-span {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+}

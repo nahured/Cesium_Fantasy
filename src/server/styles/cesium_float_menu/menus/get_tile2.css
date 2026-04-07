@@ -1,0 +1,16 @@
+
+
+
+.float-menu-get-tile-coord{
+    border: 2px solid rgb(228, 112, 184);
+}
+
+
+.float-menu-get-tile-point-get-coord {
+    border: none;
+    cursor: pointer;
+}
+
+.float-menu-get-tile-point-number {
+    background-color: brown;
+}

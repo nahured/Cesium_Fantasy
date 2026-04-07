@@ -1,0 +1,52 @@
+
+:root {
+    --float-menu-container-background-color:rgb(190, 102, 80);
+}
+
+
+.float-menu-container {
+    border: 2px solid red;
+    position: fixed;
+    width: 500px;
+    height: 200px;
+    top: 100px;
+    left: 200px;
+    z-index: 22;
+    background-color: var(--float-menu-container-background-color);
+
+    /* agregás esto */
+    display: flex;
+    flex-direction: column;
+
+    user-select: none;
+}
+
+.float-menu-container-buttons {
+    display: flex;
+    border: 2px solid yellowgreen;
+    flex-shrink: 0;
+}
+
+.float-menu-container-buttons-title {
+    
+    cursor: pointer;
+    flex: 1;
+}
+
+.float-menu-container-buttons-delete {
+    width: 30px;
+    height: 30px;
+    background-color: aqua;
+    border: none;
+    border-radius: 10px;
+}
+.float-menu-container-buttons-delete :hover {
+    cursor: pointer;
+    background-color: rgb(27, 66, 110);
+}
+
+.float-menu-body-container {
+    border: 2px solid purple;
+    /* ocupa todo el espacio restante */
+    flex: 1;
+}
