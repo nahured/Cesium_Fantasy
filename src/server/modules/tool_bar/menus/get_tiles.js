@@ -1,12 +1,13 @@
 const {float_menu} = await import(window.base_url+"modules/float_menu/float_menu_construct.js") 
 const {degreesToTile,get_grid} = await import(window.base_url+"utils/math.js")
+const {get_images_gmatrix} = await import(window.base_url+"utils/files.js")
 // hola_mundo_menu.js
 
 export class GetTile extends float_menu {
 
   constructor() {
     super({
-      menu_title: "Mi primer menú",
+      menu_title: "get_tile_meu_title",
       html: "resources/html/popups/get_tile.html",
       css:"resources/html/popups/get_tile.css",
       size: { width: "300px", height: "150px" }
@@ -53,7 +54,6 @@ export class GetTile extends float_menu {
 
   set_buttons(){
     const button = document.getElementById("get_tile_button")
-    console.log("boton")
     button.addEventListener("click",()=> {this.get_grid()})
   }
 
@@ -70,6 +70,7 @@ export class GetTile extends float_menu {
       "y": parseInt(this.p2y.value)
     }
     const grid = get_grid(p1,p2,parseInt(level.value))
+    const a = get_images_gmatrix("mundo",grid)
     console.log("grid: ",grid)
     
   }

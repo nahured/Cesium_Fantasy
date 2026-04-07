@@ -1,6 +1,7 @@
 
 
 const {GetTile} = await import(window.base_url+"modules/tool_bar/menus/get_tiles.js") 
+const {ProjectSettings} = await import(window.base_url+"modules/tool_bar/menus/project_settings.js") 
 const {get_svg_path} = await import(window.base_url+"modules/resources/sgv.js") 
 
 export async function create_tool_bar(){
@@ -35,8 +36,8 @@ async function add_title(){
 
 async function create_buttons(father){
     const _butons = [
-        await new_a("extraer_tile","copy-outline",()=> {new GetTile().build()}),
-        await new_a("dibujar","create-outline",()=> {alert("funciona el segundo")}),
+        await new_a("extraer_tile","copy-outline",()=> {new GetTile().build()}), 
+        await new_a("project settings","create-outline",()=> {new ProjectSettings().build()}),
         await new_a("tercero","copy-outline",()=> {alert("funciona el tercero")}),
         await new_a("cuarto","copy-outline",()=> {alert("funciona el cuarto")}),
     ]
