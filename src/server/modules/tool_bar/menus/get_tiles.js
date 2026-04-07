@@ -1,5 +1,5 @@
 const {float_menu} = await import(window.base_url+"modules/float_menu/float_menu_construct.js") 
-
+const {degreesToTile,get_grid} = await import(window.base_url+"utils/math.js")
 // hola_mundo_menu.js
 
 export class GetTile extends float_menu {
@@ -18,6 +18,7 @@ export class GetTile extends float_menu {
   set_logic(){
     this.set_max()
     this.set_button()
+    this.set_buttons()
   }
 
   set_max(){
@@ -50,6 +51,29 @@ export class GetTile extends float_menu {
     })
   }
 
+  set_buttons(){
+    const button = document.getElementById("get_tile_button")
+    console.log("boton")
+    button.addEventListener("click",()=> {this.get_grid()})
+  }
+
+  get_grid(){
+    const button_p1 = document.getElementById("button-point-1-get-tile")
+    const button_p2 = document.getElementById("button-point-2-get-tile")
+    const level = document.getElementById("get_tile-level")
+    const p1 = {
+      "x": parseInt(this.p1x.value),
+      "y": parseInt(this.p1y.value)
+    }
+    const p2 = {
+      "x": parseInt(this.p2x.value),
+      "y": parseInt(this.p2y.value)
+    }
+    const grid = get_grid(p1,p2,parseInt(level.value))
+    console.log("grid: ",grid)
+    
+  }
+
   set_button(){
     const button_p1 = document.getElementById("button-point-1-get-tile")
     button_p1.addEventListener("click",() =>{this.add_event_get_position("button-point-1-get-tile")})
@@ -60,9 +84,10 @@ export class GetTile extends float_menu {
   }
 
   set_tiles(p1,p2,coord,event){ // WARNING, se tiene que agregar funciones para convertir coord a tiles
-    console.log("coord:",coord)
-    p1.value = "1"
-    p2.value = "1"
+    const level = document.getElementById("get_tile-level")
+    const data = degreesToTile(coord.lon,coord.lat,level.value)
+    p1.value = data.x
+    p2.value = data.y
     window.removeEventListener(event,this.set_tiles)
   }
 

@@ -30,7 +30,7 @@ def run_webview():
     )
 
     # Iniciamos el loop de la GUI (esto bloquea este proceso)
-    webview.start()
+    webview.start(debug=True)
 
 if __name__ == "__main__":
     # Protegemos el punto de entrada (obligatorio en Windows con multiprocessing)
