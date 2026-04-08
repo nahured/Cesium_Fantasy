@@ -10,7 +10,7 @@ export class GetTile extends float_menu {
       menu_title: "get_tile_meu_title",
       html: "resources/html/popups/get_tile.html",
       css:"resources/html/popups/get_tile.css",
-      size: { width: "300px", height: "150px" }
+      size: { width: "300px", height: "150px" },
     });
     this.p1;
     this.p2;

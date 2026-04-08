@@ -4,6 +4,8 @@ const {GetTile} = await import(window.base_url+"modules/tool_bar/menus/get_tiles
 const {ProjectSettings} = await import(window.base_url+"modules/tool_bar/menus/project_settings.js") 
 const {get_svg_path} = await import(window.base_url+"modules/resources/sgv.js") 
 
+window.pupup_menu  = []
+
 export async function create_tool_bar(){
     const tool_bar_base = document.createElement("div")
     tool_bar_base.id = "tool-bar-base"
@@ -36,10 +38,10 @@ async function add_title(){
 
 async function create_buttons(father){
     const _butons = [
-        await new_a("extraer_tile","copy-outline",()=> {new GetTile().build()}), 
-        await new_a("project settings","create-outline",()=> {new ProjectSettings().build()}),
+        await new_a("extraer_tile","copy-outline",()=>{load_pupop_menubar(GetTile)}),
+        await new_a("project settings","create-outline",()=>{load_pupop_menubar(ProjectSettings)}),
         await new_a("tercero","copy-outline",()=> {alert("funciona el tercero")}),
-        await new_a("cuarto","copy-outline",()=> {alert("funciona el cuarto")}),
+        await new_a("cuarto","copy-outline",()=> {alert("holi")}),
     ]
     for (const li of _butons) {
         father.appendChild(li)
@@ -60,4 +62,12 @@ async function new_a(text,icon,callable) {
     button.appendChild(span)
     li.appendChild(button)
     return li
+}
+
+async function load_pupop_menubar(menu) {
+    const a = await new menu()
+    if (window.pupup_menu.indexOf(a.menu_title) == -1){
+        a.build()
+        window.pupup_menu.push(a.menu_title)
+    }
 }

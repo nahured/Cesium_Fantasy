@@ -76,6 +76,8 @@ export class float_menu{
         button_delete.className = "float-menu-container-buttons-delete"
         this.add_click(button_delete,() => {
             this.float_menu_body.remove()
+            const index = window.pupup_menu.indexOf(this.menu_title)
+            window.pupup_menu.splice(index,1)
         })
         menu_div.appendChild(button_delete)
 
@@ -94,5 +96,6 @@ export class float_menu{
     async build() {
         await this.get_elements()
         this.set_logic() // la logica se tiene que cargar al final
+        return this
     }
 }
