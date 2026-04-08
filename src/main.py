@@ -19,7 +19,7 @@ def run_webview():
 
     # Crear la ventana dentro del proceso separado
     window = webview.create_window(
-        title="Ventana en Proceso Separado",
+        title="Cesium Fantasy",
         url=str(html_path),           # puedes poner una URL o un archivo HTML
         # html="<h1>Hola desde pywebview en proceso aparte</h1>",  # alternativa
         width=1000,
@@ -30,7 +30,8 @@ def run_webview():
     )
 
     # Iniciamos el loop de la GUI (esto bloquea este proceso)
-    webview.start(debug=True)
+    #webview.start(debug=True)
+    webview.start()
 
 if __name__ == "__main__":
     # Protegemos el punto de entrada (obligatorio en Windows con multiprocessing)
