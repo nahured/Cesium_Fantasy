@@ -7,7 +7,7 @@ export class GetTile extends float_menu {
 
   constructor() {
     super({
-      menu_title: "get_tile_meu_title",
+      menu_title: i18next.t("get_tile:title"),
       html: "resources/html/popups/get_tile.html",
       css:"resources/html/popups/get_tile.css",
       size: { width: "300px", height: "150px" },

@@ -30,8 +30,8 @@ def run_webview():
     )
 
     # Iniciamos el loop de la GUI (esto bloquea este proceso)
-    #webview.start(debug=True)
-    webview.start()
+    webview.start(debug=True)
+    #webview.start()
 
 if __name__ == "__main__":
     # Protegemos el punto de entrada (obligatorio en Windows con multiprocessing)
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     # Aquí puedes seguir ejecutando código en el proceso principal
     try:
         while p.is_alive():
-            print("El proceso de la ventana sigue vivo...")
+            #print("El proceso de la ventana sigue vivo...")
             time.sleep(5)
     except KeyboardInterrupt:
         print("Cerrando todo...")

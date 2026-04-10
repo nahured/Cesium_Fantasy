@@ -1,3 +1,4 @@
+const {apply_translations} = await import(window.base_url+"modules/translations/translation_init.js") 
 
 
 
@@ -45,6 +46,7 @@ export class float_menu{
         
         document.body.appendChild(this.float_menu_body)
         //cesium_container.
+        apply_translations()
     }
 
     make_options_menu(){

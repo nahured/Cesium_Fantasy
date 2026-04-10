@@ -2,6 +2,7 @@ window.base_url = window.location.href.substring(0, window.location.href.lastInd
 
 const {create_viewer} = await import(window.base_url+"modules/cesium/construct.js") 
 const {create_tool_bar} = await import(window.base_url+"modules/tool_bar/construct.js") 
+const {translation_init} = await import(window.base_url+"modules/translations/translation_init.js") 
 
 
 
@@ -17,10 +18,11 @@ function make_cesium_container() {
 }
 
 
-function main(){
+async function main(){
+    await translation_init()
     make_cesium_container()
     create_viewer("clear")
     create_tool_bar()
 }
 
-main();
+await main();

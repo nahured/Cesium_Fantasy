@@ -38,8 +38,8 @@ async function add_title(){
 
 async function create_buttons(father){
     const _butons = [
-        await new_a("extraer_tile","copy-outline",()=>{load_pupop_menubar(GetTile)}),
-        await new_a("project settings","create-outline",()=>{load_pupop_menubar(ProjectSettings)}),
+        await new_a(i18next.t("menu:get_tile"),"copy-outline",()=>{load_pupop_menubar(GetTile)}),
+        await new_a(i18next.t("menu:project_seting"),"create-outline",()=>{load_pupop_menubar(ProjectSettings)}),
         await new_a("tercero","copy-outline",()=> {alert("funciona el tercero")}),
         await new_a("cuarto","copy-outline",()=> {alert("holi")}),
     ]
