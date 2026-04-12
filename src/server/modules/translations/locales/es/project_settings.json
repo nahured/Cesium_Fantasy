@@ -1,0 +1,10 @@
+{
+    "load_project":"Cargar",
+    "new_project":"Nuevo",
+    "edit_project":"Editar",
+    "save_project":"Guardar",
+    "button_project":"Proyecto",
+    "button_data":"Datos",
+    "button_program":"Programa",
+    "selection_option_default":"seleccionar proyecto"
+}

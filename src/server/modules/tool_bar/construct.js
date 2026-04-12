@@ -3,6 +3,7 @@
 const {GetTile} = await import(window.base_url+"modules/tool_bar/menus/get_tiles.js") 
 const {ProjectSettings} = await import(window.base_url+"modules/tool_bar/menus/project_settings.js") 
 const {get_svg_path} = await import(window.base_url+"modules/resources/sgv.js") 
+const {open_file_dialog} = await import(window.base_url+"modules/pywebview/utils.js") 
 
 window.pupup_menu  = []
 
@@ -40,7 +41,10 @@ async function create_buttons(father){
     const _butons = [
         await new_a(i18next.t("menu:get_tile"),"copy-outline",()=>{load_pupop_menubar(GetTile)}),
         await new_a(i18next.t("menu:project_seting"),"create-outline",()=>{load_pupop_menubar(ProjectSettings)}),
-        await new_a("tercero","copy-outline",()=> {alert("funciona el tercero")}),
+        await new_a("tercero","copy-outline",async ()=> {
+            const a = await pywebview.api.file_dialog_api.open_folder_dialog()
+            console.log("raro esto ",a)
+        }),
         await new_a("cuarto","copy-outline",()=> {alert("holi")}),
     ]
     for (const li of _butons) {

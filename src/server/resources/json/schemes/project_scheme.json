@@ -1,0 +1,11 @@
+{
+    "name":"string",
+    "layers":"array",
+    "globe":{
+        "x":"integer",
+        "y":"integer",
+        "z":"integer"
+    },
+    "rotation":"integer",
+    "sun_distance":"integer"
+}

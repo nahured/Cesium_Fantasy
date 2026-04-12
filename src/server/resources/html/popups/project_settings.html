@@ -1,12 +1,27 @@
 <div id="project_settings_div">
     <div id="project_settings_tab_nav" class="tab-nav">
-        <button class="tab-btn active" id="proyecto">Proyecto</button>
-        <button class="tab-btn" id="programa">Prorama</button>
+        <button class="tab-btn active" id="proyecto" data-i18n="project_settings:button_project"></button>
+        <button class="tab-btn" id="data" data-i18n="project_settings:button_data"></button>
+        <button class="tab-btn" id="program" data-i18n="project_settings:button_program"></button>
     </div>
     <div id="tab-proyecto" class="tab-content">
-        <h1>proyecto</h1>
+        <div>
+            <button id="load_project" data-i18n="project_settings:load_project"></button>
+            <button data-i18n="project_settings:new_project"></button>
+        </div>
+        <div>
+            <button data-i18n="project_settings:edit_project"></button>
+            <select name="projects" id="selection_project">
+                <option data-i18n="project_settings:selection_option_default"></option>
+            </select>
+        </div>
+        <div>
+            <button data-i18n="project_settings:save_project"></button>
+        </div>
     </div>
-    <div id="tab-programa" class="tab-content" style="display:none;">
+    <div id="tab-data" class="tab-content" style="display:none;">
         <h1>Programa</h1>
+    </div>
+    <div id="tab-program" class="tab-content" style="display:none;">
     </div>
 </div>

@@ -15,6 +15,17 @@ export class ProjectSettings extends float_menu {
 
     set_logic(){
         this.set_tabs()
+        this.set_buttons()
+    }
+
+    set_buttons(){
+        const load_project_button = document.getElementById("load_project")
+        load_project_button.addEventListener("click", async () => {
+            console.log("cargar ")
+            const path = await pywebview.api.file_dialog_api.open_folder_dialog()
+            const list = await pywebview.api.project.load_project(path)
+            console.log("lista = ",list)
+        } )
     }
 
     set_tabs(){

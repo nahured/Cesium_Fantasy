@@ -13,7 +13,7 @@ function load_traslate(lang,ns){
 }
 
 
-const lang_json_name_space = ["menu","get_tile"]
+const lang_json_name_space = ["menu","get_tile","project_settings"]
 
 async function get_langs(langs){
     let resources = {}
@@ -43,7 +43,6 @@ export function translation_test(){
 export function apply_translations() {
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n')
-        console.log(key)
         el.textContent = i18next.t(key)
     })
 }
