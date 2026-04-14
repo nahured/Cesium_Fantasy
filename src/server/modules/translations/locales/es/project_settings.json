@@ -6,5 +6,16 @@
     "button_project":"Proyecto",
     "button_data":"Datos",
     "button_program":"Programa",
-    "selection_option_default":"seleccionar proyecto"
+    "selection_option_default":"Seleccionar proyecto",
+    "button_newProject":"Proyecto nuevo",
+    "new_project_name":"Nombre",
+    "new_project_rotation":"Rotacion del planeta",
+    "new_project_sun_distance":"Distancia al sol",
+    "new_project_img_size":"Tamaño de imagen",
+    "color_color_0":"Rojo Azul",
+    "color_transparent":"Transparente",
+    "color_grid":"Grilla",
+    "new_project_get_folder":"buscar carpeta",
+    "new_project_make_folder":"¿crear carpeta?",
+    "new_project_sumit":"Crear"
 }

@@ -1,6 +1,7 @@
 <div id="project_settings_div">
     <div id="project_settings_tab_nav" class="tab-nav">
         <button class="tab-btn active" id="proyecto" data-i18n="project_settings:button_project"></button>
+        <button class="tab-btn" id="newProject" data-i18n="project_settings:button_newProject"></button>
         <button class="tab-btn" id="data" data-i18n="project_settings:button_data"></button>
         <button class="tab-btn" id="program" data-i18n="project_settings:button_program"></button>
     </div>
@@ -17,6 +18,40 @@
         </div>
         <div>
             <button data-i18n="project_settings:save_project"></button>
+        </div>
+    </div>
+    <div id="tab-newProject" class="tab-content" style="display:none;">
+        <div>
+            <form id="new_project_form">
+                <label for="name" data-i18n="project_settings:new_project_name"></label>
+                <input name="name" type="text" id="name" required>
+
+                <div class="grid">
+                    <label for="rotation" data-i18n="project_settings:new_project_rotation"></label>
+                    <input name="rotation" type="number" id="rotation">
+                    
+                    <label for="sun_distance" data-i18n="project_settings:new_project_sun_distance"></label>
+                    <input name="sun_distance" type="number" id="sun_distance">
+                </div>
+
+                <div>
+                    <select name="color">
+                        <option value=0 data-i18n="project_settings:color_color_0"></option>
+                        <option value=1 data-i18n="project_settings:color_transparent"></option>
+                        <option value=2 data-i18n="project_settings:color_grid"></option>
+                    </select>
+                    <label for="size_img" data-i18n="project_settings:new_project_img_size"></label>
+                    <input type="number" name="size">
+                </div>
+                
+                <input name="folder_label" type="text" id="folder_label">
+                <button type="button" id="get_project_folder" data-i18n="project_settings:new_project_get_folder"></button>
+
+                <label for="make_folder" data-i18n="project_settings:new_project_make_folder"></label>
+                <input name="make_folder" type="checkbox" id="make_folder">
+
+                <button type="button" data-i18n="project_settings:new_project_sumit" id="new_project_save"></button>
+            </form>
         </div>
     </div>
     <div id="tab-data" class="tab-content" style="display:none;">

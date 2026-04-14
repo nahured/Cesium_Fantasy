@@ -7,7 +7,7 @@ export class ProjectSettings extends float_menu {
           menu_title: "project_settings_title",
           html: "resources/html/popups/project_settings.html",
           css:"resources/html/popups/project_settings.css",
-          size: { width: "300px", height: "300px" }
+          size: { width: "600px", height: "300px" }
         });
         this.p1;
         this.p2;
@@ -16,6 +16,27 @@ export class ProjectSettings extends float_menu {
     set_logic(){
         this.set_tabs()
         this.set_buttons()
+        this.set_new_project()
+    }
+
+    set_new_project(){
+        // botones
+        const div = document.getElementById("project_settings_div")
+        const button_make_folder = document.getElementById("get_project_folder")
+        const button_save = document.getElementById("new_project_save")
+        const folder_label = document.getElementById("folder_label")
+        button_make_folder.addEventListener("click",async () => {
+            const path = await pywebview.api.file_dialog_api.open_folder_dialog()
+            folder_label.value = path
+            
+        })
+        button_save.addEventListener("click",async ()=>{
+            const form = document.getElementById("new_project_form")
+            const obj = new FormData(form)
+            const data = Object.fromEntries(obj)
+            console.log("data 1 ",data)
+            console.log("data ",JSON.stringify(data))
+        })
     }
 
     set_buttons(){
